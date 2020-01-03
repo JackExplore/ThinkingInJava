@@ -1,4 +1,4 @@
-package alpha.ch21.demo;
+package alpha.ch21.zDemo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

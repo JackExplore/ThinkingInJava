@@ -1,4 +1,4 @@
-package alpha.ch21.demo;
+package alpha.ch21.zDemo;
 
 import alpha.ch13.Ch21TestInterface;
 

@@ -19,6 +19,11 @@ public class MutexEvenGenerator extends IntGenerator {
             Thread.yield();
             ++currentEvenValue;
             return currentEvenValue;
+            /**
+             * return finally 疑惑：
+             * P681  什么才属于原子操作？
+             *       对域中的值做  赋值  和  返回操作  通常都是原子性的。
+             */
         } finally {
             lock.unlock();
         }

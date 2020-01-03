@@ -1,4 +1,4 @@
-package alpha.ch21;
+package alpha.ch21.cPrior;
 
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +22,6 @@ public class SimpleDaemons implements Runnable {
             daemon.start();
         }
         System.out.println("All daemons started.");
-        TimeUnit.MILLISECONDS.sleep(180);
+        TimeUnit.MILLISECONDS.sleep(150);
     }
 }

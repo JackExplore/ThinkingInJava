@@ -1,9 +1,12 @@
-package alpha.ch21.resource;
+package alpha.ch21.dShare;
 
 public abstract class IntGenerator {
+
     private volatile boolean canceled = false;
+
     public abstract int next();
 
+    // allow this to be canceled:
     public void cancel(){
         canceled = true;
     }
@@ -11,4 +14,5 @@ public abstract class IntGenerator {
     public boolean isCanceled(){
         return canceled;
     }
+
 }

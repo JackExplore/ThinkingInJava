@@ -1,11 +1,13 @@
-package alpha.ch21.resource;
+package alpha.ch21.dShare;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class EvenChecker implements Runnable {
 
     private IntGenerator generator;
+
     private final int id;
 
     public EvenChecker(IntGenerator g, int ident){
@@ -19,22 +21,37 @@ public class EvenChecker implements Runnable {
             int val = generator.next();
             if(val % 2 != 0){
                 System.out.println(val + " not even !");
-                generator.cancel();
+                generator.cancel(); // Cancels all Evencheckers
             }
-
         }
     }
 
+    // Test any type of IntGenerator :
     public static void test(IntGenerator gp, int count){
-        System.out.println("Press Control-C to Exit");
+        System.out.println("Press Control-C to exit : ");
         ExecutorService exec = Executors.newCachedThreadPool();
         for(int i=0; i<count; i++){
+//            System.out.println("Task " + i + " started");
             exec.execute(new EvenChecker(gp, i));
         }
+        exec.execute(()->{
+            while(!gp.isCanceled()){
+                System.out.println("value = " + gp.next());
+                try {
+                    TimeUnit.SECONDS.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
         exec.shutdown();
     }
 
+    // Default value for count :
     public static void test(IntGenerator gp){
         test(gp, 10);
     }
+
+
 }

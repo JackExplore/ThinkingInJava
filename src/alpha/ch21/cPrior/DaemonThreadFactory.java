@@ -1,11 +1,11 @@
-package alpha.ch21;
+package alpha.ch21.cPrior;
 
 import java.util.concurrent.ThreadFactory;
 
 public class DaemonThreadFactory implements ThreadFactory {
     @Override
     public Thread newThread(Runnable r) {
-        Thread t = new Thread();
+        Thread t = new Thread(r);
         t.setDaemon(true);
         return t;
     }

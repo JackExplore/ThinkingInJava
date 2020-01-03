@@ -1,4 +1,4 @@
-package alpha.ch21.dShare;
+package alpha.ch21.eAtomic;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -49,7 +49,7 @@ public class SerialNumberChecker {
         @Override
         public void run() {
             while(true){
-                int serial = SerialNumberGenerator.nextSerialNumber();
+                int serial = SerialNumberGenerator.nextSerialNumber();  // synchronized
                 if(serials.contains(serial)){
                     System.out.println("Duplicate : " + serial);
                     System.exit(0);
@@ -66,7 +66,7 @@ public class SerialNumberChecker {
         }
         // stop after n seconds if there's an argument :
 //        if(args.length > 0){
-        TimeUnit.SECONDS.sleep(new Integer(50));
+        TimeUnit.SECONDS.sleep(new Integer(10));
         System.out.println("No duplicates detected.");
         System.exit(0);
 //        }

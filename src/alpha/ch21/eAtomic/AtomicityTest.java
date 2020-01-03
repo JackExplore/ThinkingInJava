@@ -1,4 +1,4 @@
-package alpha.ch21.dShare;
+package alpha.ch21.eAtomic;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
